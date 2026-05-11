@@ -25,5 +25,5 @@ public class Shift {
     @Column(name = "endTime")
     private LocalDateTime endTime;
     @Column(name = "ammountOfEmployeesNeeded")
-    private LocalDateTime ammountOfEmployeesNeeded;
+    private LocalDateTime amountOfEmployeesNeeded;
 }
