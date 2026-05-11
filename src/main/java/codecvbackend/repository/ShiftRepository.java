@@ -1,4 +1,8 @@
 package codecvbackend.repository;
 
-public interface ShiftRepository {
+import codecvbackend.Entity.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ShiftRepository extends JpaRepository <Employee, Long> {
+
 }
