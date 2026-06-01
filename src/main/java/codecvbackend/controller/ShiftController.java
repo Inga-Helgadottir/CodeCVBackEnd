@@ -37,6 +37,30 @@ public class ShiftController {
         return ResponseEntity.ok(shifts);
     }
 
+
+
+
+
+
+
+
+
+
+    // Build get all Shifts REST API
+    @GetMapping
+    public ResponseEntity<List<ShiftDTO>> getAllShiftsWithMissingEmployees(){
+        List<ShiftDTO> missingEmployeeShifts = ShiftService.getAllShiftsWithMissingEmployees();
+        return ResponseEntity.ok(missingEmployeeShifts);
+    }
+
+
+
+
+
+
+
+
+
     // Build update Shift REST API
     @PutMapping("{id}")
     public ResponseEntity<ShiftDTO> updateShift(@PathVariable("id") Long shiftId, @RequestBody ShiftDTO updatedShift){

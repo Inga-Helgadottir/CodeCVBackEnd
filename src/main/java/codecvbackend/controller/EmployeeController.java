@@ -1,6 +1,8 @@
 package codecvbackend.controller;
 
+import codecvbackend.Entity.Shift;
 import codecvbackend.dto.EmployeeDTO;
+import codecvbackend.dto.ShiftDTO;
 import codecvbackend.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,13 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("id") Long employeeId){
         EmployeeDTO employee = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employee);
+    }
+
+    // Build get employee shifts REST API
+    @GetMapping("{id}")
+    public ResponseEntity<List<ShiftDTO>> getEmployeeShiftsById(@PathVariable("id") Long employeeId){
+        List<ShiftDTO> shiftsDTOs = employeeService.getAllEmployeeShifts(employeeId);
+        return ResponseEntity.ok(shiftsDTOs);
     }
 
     // Build get all employees REST API
