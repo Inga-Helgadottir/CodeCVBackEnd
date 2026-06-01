@@ -2,25 +2,35 @@ package codecvbackend.mapper;
 
 import codecvbackend.Entity.Shift;
 import codecvbackend.dto.ShiftDTO;
+import codecvbackend.service.impl.EmployeeServiceImpl;
+import codecvbackend.service.impl.ShiftServiceImpl;
 
 public class ShiftMapper {
-    public static ShiftDTO mapToShiftDto(Shift shift){
+
+    private EmployeeServiceImpl employeeService;
+
+    public ShiftMapper(EmployeeServiceImpl employeeService, ShiftServiceImpl shiftService) {
+        this.employeeService = employeeService;
+    }
+
+    public ShiftDTO mapToShiftDto(Shift shift){
         return new ShiftDTO(
                 shift.getId(),
                 shift.getDepartment(),
                 shift.getStartTime(),
                 shift.getEndTime(),
-                shift.getAmountOfEmployeesNeeded()
+                shift.getAmountOfEmployeesNeeded(),
+                shift.getEmployeeIds()
         );
     }
 
-    public static Shift mapToShift(ShiftDTO shiftDto){
+    public Shift mapToShift(ShiftDTO shiftDto){
         return new Shift(
-                shiftDto.getId(),
                 shiftDto.getDepartment(),
                 shiftDto.getStartTime(),
                 shiftDto.getEndTime(),
-                shiftDto.getAmountOfEmployeesNeeded()
-        );
+                shiftDto.getId(),
+                employeeService.getEmployeesById(shiftDto.getEmployeeIds())
+                );
     }
 }

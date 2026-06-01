@@ -4,21 +4,24 @@ import codecvbackend.Entity.Employee;
 import codecvbackend.dto.EmployeeDTO;
 
 public class EmployeeMapper {
-    public static EmployeeDTO mapToEmployeeDto(Employee employee){
+
+    public EmployeeDTO mapToEmployeeDto(Employee employee){
         return new EmployeeDTO(
                 employee.getId(),
                 employee.getFirstName(),
                 employee.getLastName(),
-                employee.getEmail()
-        );
+                employee.getEmail(),
+                employee.getShifts()
+                );
     }
 
-    public static Employee mapToEmployee(EmployeeDTO employeeDto){
+    public Employee mapToEmployee(EmployeeDTO employeeDto){
         return new Employee(
                 employeeDto.getId(),
                 employeeDto.getFirstName(),
                 employeeDto.getLastName(),
-                employeeDto.getEmail()
+                employeeDto.getEmail(),
+                employeeDto.getShifts()
         );
     }
 }
