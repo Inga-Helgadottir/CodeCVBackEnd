@@ -1,8 +1,10 @@
 package codecvbackend.service;
 
+import codecvbackend.Entity.Shift;
 import codecvbackend.dto.ShiftDTO;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ShiftService {
     ShiftDTO createShift(ShiftDTO shiftIdDto);
@@ -14,4 +16,8 @@ public interface ShiftService {
     ShiftDTO updateShift(Long shiftId, ShiftDTO updatedShift);
 
     void deleteShift(Long employeeId);
+
+    List<ShiftDTO> getAllShiftsWithMissingEmployees();
+
+    Set<Shift> getShiftsById(Set<Long> shiftIds);
 }
