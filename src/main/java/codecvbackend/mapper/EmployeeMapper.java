@@ -5,7 +5,7 @@ import codecvbackend.dto.EmployeeDTO;
 
 public class EmployeeMapper {
 
-    public EmployeeDTO mapToEmployeeDto(Employee employee){
+    public static EmployeeDTO mapToEmployeeDto(Employee employee){
         return new EmployeeDTO(
                 employee.getId(),
                 employee.getFirstName(),
@@ -15,7 +15,7 @@ public class EmployeeMapper {
                 );
     }
 
-    public Employee mapToEmployee(EmployeeDTO employeeDto){
+    public static Employee mapToEmployee(EmployeeDTO employeeDto){
         return new Employee(
                 employeeDto.getId(),
                 employeeDto.getFirstName(),

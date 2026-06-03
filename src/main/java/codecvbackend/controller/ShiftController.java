@@ -30,6 +30,13 @@ public class ShiftController {
         return ResponseEntity.ok(Shift);
     }
 
+    // Build get Shift REST API
+    @GetMapping("{ids}")
+    public ResponseEntity<ShiftDTO> getShiftsById(@PathVariable("ids") List<Long> shiftId){
+        List<ShiftDTO> Shifts = ShiftService.getShiftsById(shiftId);
+        return ResponseEntity.ok((ShiftDTO) Shifts);
+    }
+
     // Build get all Shifts REST API
     @GetMapping
     public ResponseEntity<List<ShiftDTO>> getAllShifts(){
@@ -37,29 +44,12 @@ public class ShiftController {
         return ResponseEntity.ok(shifts);
     }
 
-
-
-
-
-
-
-
-
-
     // Build get all Shifts REST API
     @GetMapping
     public ResponseEntity<List<ShiftDTO>> getAllShiftsWithMissingEmployees(){
         List<ShiftDTO> missingEmployeeShifts = ShiftService.getAllShiftsWithMissingEmployees();
         return ResponseEntity.ok(missingEmployeeShifts);
     }
-
-
-
-
-
-
-
-
 
     // Build update Shift REST API
     @PutMapping("{id}")

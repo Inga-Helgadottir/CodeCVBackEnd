@@ -10,37 +10,35 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ShiftServiceImpl implements ShiftService {
+
     private ShiftRepository shiftRepository;
-    private ShiftMapper shiftMapper;
 
     @Override
     public ShiftDTO createShift(ShiftDTO shiftDto) {
-        Shift shift = shiftMapper.mapToShift(shiftDto);
+        Shift shift = ShiftMapper.mapToShift(shiftDto);
         Shift savedShift = shiftRepository.save(shift);
 
-        return shiftMapper.mapToShiftDto(savedShift);
+        return ShiftMapper.mapToShiftDto(savedShift);
     }
 
     @Override
     public ShiftDTO getShiftById(Long shiftId) {
         Shift shift = shiftRepository.findById(shiftId).orElseThrow(()-> new ResourceNotFoundException("Shift does not exist with the id: " + shiftId));
 
-        return shiftMapper.mapToShiftDto(shift);
+        return ShiftMapper.mapToShiftDto(shift);
     }
 
     @Override
     public List<ShiftDTO> getAllShifts() {
         List<Shift> shifts = shiftRepository.findAll();
 
-        return shifts.stream().map((shift) -> shiftMapper.mapToShiftDto(shift)).collect(Collectors.toList());
+        return shifts.stream().map(ShiftMapper::mapToShiftDto).collect(Collectors.toList());
     }
 
     @Override
@@ -69,7 +67,7 @@ public class ShiftServiceImpl implements ShiftService {
 
         Shift updatedShiftObj = shiftRepository.save(shift);
 
-        return shiftMapper.mapToShiftDto(updatedShiftObj);
+        return ShiftMapper.mapToShiftDto(updatedShiftObj);
     }
 
     @Override
@@ -81,7 +79,8 @@ public class ShiftServiceImpl implements ShiftService {
     }
 
     @Override
-    public Set<Shift> getShiftsById(Set<Long> shiftIds){
-        return new HashSet<>(shiftRepository.findAllById(shiftIds));
+    public List<ShiftDTO> getShiftsById(List<Long> shiftIds){
+        List<Shift> shifts = shiftRepository.findAllById(shiftIds);
+        return new ArrayList<>(ShiftMapper.mapToShiftDtos(shifts));
     }
 }

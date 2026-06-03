@@ -5,7 +5,6 @@ import codecvbackend.dto.EmployeeDTO;
 import codecvbackend.dto.ShiftDTO;
 
 import java.util.List;
-import java.util.Set;
 
 public interface EmployeeService {
     EmployeeDTO createEmployee(EmployeeDTO employeeDto);
@@ -20,5 +19,5 @@ public interface EmployeeService {
 
     void deleteEmployee(Long employeeId);
 
-    Set<Employee> getEmployeesById(Set<Long> employeeIds);
+    List<Employee> getEmployeesById(List<Long> employeeIds);
 }

@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,23 +24,23 @@ public class Shift {
     private LocalDateTime startTime;
     @Column(name = "endTime")
     private LocalDateTime endTime;
-    @Column(name = "ammountOfEmployeesNeeded")
+    @Column(name = "amountOfEmployeesNeeded")
     private Long amountOfEmployeesNeeded;
     @ManyToMany
-    @JoinTable(name = "employeeShifts",
+    @JoinTable(name = "employeesOnShifts",
             joinColumns = @JoinColumn(name = "shiftId"),
             inverseJoinColumns = @JoinColumn(name = "employeeId")
     )
-    private Set<Employee> employeesOnShifts = new HashSet<>();
+    private List<Employee> employeesOnShifts = new ArrayList<>();
 
-    public Shift(String department, LocalDateTime startTime, LocalDateTime endTime, Boolean areThereEnoughEmployees, Long amountOfEmployeesNeeded) {
+    public Shift(String department, LocalDateTime startTime, LocalDateTime endTime, Long amountOfEmployeesNeeded) {
         this.department = department;
         this.startTime = startTime;
         this.endTime = endTime;
         this.amountOfEmployeesNeeded = amountOfEmployeesNeeded;
     }
 
-    public Shift(String department, LocalDateTime startTime, LocalDateTime endTime, Long amountOfEmployeesNeeded, Set<Employee> employeesOnShifts) {
+    public Shift(String department, LocalDateTime startTime, LocalDateTime endTime, Long amountOfEmployeesNeeded, List<Employee> employeesOnShifts) {
         this.department = department;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -48,9 +48,9 @@ public class Shift {
         this.employeesOnShifts = employeesOnShifts;
     }
 
-    public Set<Long> getEmployeeIds() {
-        Set<Long> employeeIds = new HashSet<>();
-        Set<Employee> employees = this.employeesOnShifts;
+    public List<Long> getEmployeeIds() {
+        List<Long> employeeIds = new ArrayList<>();
+        List<Employee> employees = this.employeesOnShifts;
 
         for (Employee employee : employees) {
             employeeIds.add(employee.getId());
@@ -66,10 +66,6 @@ public class Shift {
 
 
     public boolean areThereEnoughEmployees(){
-        if(this.amountOfEmployeesNeeded == employeesOnShifts.size()){
-            return true;
-        }else{
-            return false;
-        }
+        return this.amountOfEmployeesNeeded == employeesOnShifts.size();
     }
 }

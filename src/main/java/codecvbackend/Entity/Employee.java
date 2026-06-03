@@ -3,8 +3,8 @@ package codecvbackend.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,15 +23,8 @@ public class Employee {
     private String lastName;
     @Column(name = "email", nullable = false)
     private String email;
-    @ManyToMany(mappedBy = "employeeShifts")
-    private Set<Shift> shifts = new HashSet<>();
-
-    public Employee(String firstName, String lastName, String email, Set<Shift> shifts) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.shifts = shifts;
-    }
+    @ManyToMany(mappedBy = "employeesOnShifts")
+    private List<Shift> shifts = new ArrayList<>();
 
     public Employee(String firstName, String lastName, String email) {
         this.firstName = firstName;

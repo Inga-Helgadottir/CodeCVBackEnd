@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,7 +20,7 @@ public class ShiftDTO {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Long amountOfEmployeesNeeded;
-    private Set<Long> employeeIds = new HashSet<>();
+    private List<Long> employeeIds = new ArrayList<>();
 
     public ShiftDTO(Shift shift){
         if(shift != null){

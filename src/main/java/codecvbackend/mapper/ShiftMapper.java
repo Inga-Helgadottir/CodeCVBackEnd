@@ -3,17 +3,19 @@ package codecvbackend.mapper;
 import codecvbackend.Entity.Shift;
 import codecvbackend.dto.ShiftDTO;
 import codecvbackend.service.impl.EmployeeServiceImpl;
-import codecvbackend.service.impl.ShiftServiceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShiftMapper {
 
-    private EmployeeServiceImpl employeeService;
+    private static EmployeeServiceImpl employeeService;
 
-    public ShiftMapper(EmployeeServiceImpl employeeService, ShiftServiceImpl shiftService) {
-        this.employeeService = employeeService;
+    public ShiftMapper(EmployeeServiceImpl employeeService) {
+        ShiftMapper.employeeService = employeeService;
     }
 
-    public ShiftDTO mapToShiftDto(Shift shift){
+    public static ShiftDTO mapToShiftDto(Shift shift){
         return new ShiftDTO(
                 shift.getId(),
                 shift.getDepartment(),
@@ -24,7 +26,15 @@ public class ShiftMapper {
         );
     }
 
-    public Shift mapToShift(ShiftDTO shiftDto){
+    public static List<ShiftDTO> mapToShiftDtos(List<Shift> shifts){
+        List<ShiftDTO> shiftDTOS = new ArrayList<>();
+        for(Shift shift : shifts){
+            shiftDTOS.add(mapToShiftDto(shift));
+        }
+        return shiftDTOS;
+    }
+
+    public static Shift mapToShift(ShiftDTO shiftDto){
         return new Shift(
                 shiftDto.getDepartment(),
                 shiftDto.getStartTime(),
