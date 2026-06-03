@@ -32,7 +32,7 @@ public class EmployeeController {
     }
 
     // Build get employee shifts REST API
-    @GetMapping("{id}")
+    @GetMapping("employeeShifts/{id}")
     public ResponseEntity<List<ShiftDTO>> getEmployeeShiftsById(@PathVariable("id") Long employeeId){
         List<ShiftDTO> shiftsDTOs = employeeService.getAllEmployeeShifts(employeeId);
         return ResponseEntity.ok(shiftsDTOs);

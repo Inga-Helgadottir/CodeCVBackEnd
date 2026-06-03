@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -31,9 +32,14 @@ public class ShiftController {
     }
 
     // Build get Shift REST API
-    @GetMapping("{ids}")
-    public ResponseEntity<ShiftDTO> getShiftsById(@PathVariable("ids") List<Long> shiftId){
-        List<ShiftDTO> Shifts = ShiftService.getShiftsById(shiftId);
+    @GetMapping("{shiftIds}")
+    public ResponseEntity<ShiftDTO> getShiftsById(@PathVariable("shiftIds") String shiftIdsToFind){
+        List<String> shiftIdsString = List.of(shiftIdsToFind.split(":"));
+        List<Long> shiftIdsLong = new ArrayList<>();
+        for (String id: shiftIdsString){
+            shiftIdsLong.add(Long.parseLong(id));
+        }
+        List<ShiftDTO> Shifts = ShiftService.getShiftsById(shiftIdsLong);
         return ResponseEntity.ok((ShiftDTO) Shifts);
     }
 
@@ -45,7 +51,7 @@ public class ShiftController {
     }
 
     // Build get all Shifts REST API
-    @GetMapping
+    @GetMapping("/missingEmployees")
     public ResponseEntity<List<ShiftDTO>> getAllShiftsWithMissingEmployees(){
         List<ShiftDTO> missingEmployeeShifts = ShiftService.getAllShiftsWithMissingEmployees();
         return ResponseEntity.ok(missingEmployeeShifts);

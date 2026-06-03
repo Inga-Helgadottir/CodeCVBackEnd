@@ -1,7 +1,12 @@
 package codecvbackend.mapper;
 
 import codecvbackend.Entity.Employee;
+import codecvbackend.Entity.Shift;
 import codecvbackend.dto.EmployeeDTO;
+import codecvbackend.dto.ShiftDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeMapper {
 
@@ -23,5 +28,13 @@ public class EmployeeMapper {
                 employeeDto.getEmail(),
                 employeeDto.getShifts()
         );
+    }
+
+    public static List<Employee> mapToEmployees(List<EmployeeDTO> employeeDtos) {
+        List<Employee> employees = new ArrayList<>();
+        for (EmployeeDTO employeeDTO : employeeDtos){
+            employees.add(mapToEmployee(employeeDTO));
+        }
+        return employees;
     }
 }

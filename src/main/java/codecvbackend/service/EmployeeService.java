@@ -20,4 +20,6 @@ public interface EmployeeService {
     void deleteEmployee(Long employeeId);
 
     List<Employee> getEmployeesById(List<Long> employeeIds);
+
+    public List<EmployeeDTO> getEmployeesByShiftId(Long shiftId);
 }

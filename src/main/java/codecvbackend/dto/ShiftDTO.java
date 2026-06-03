@@ -20,7 +20,6 @@ public class ShiftDTO {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Long amountOfEmployeesNeeded;
-    private List<Long> employeeIds = new ArrayList<>();
 
     public ShiftDTO(Shift shift){
         if(shift != null){
@@ -29,7 +28,6 @@ public class ShiftDTO {
             this.startTime = shift.getStartTime();
             this.endTime = shift.getEndTime();
             this.amountOfEmployeesNeeded = shift.getAmountOfEmployeesNeeded();
-            this.employeeIds = shift.getEmployeeIds();
         }
     }
 }

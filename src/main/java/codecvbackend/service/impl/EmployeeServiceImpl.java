@@ -79,4 +79,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getEmployeesById(List<Long> employeeIds){
         return new ArrayList<>(employeeRepository.findAllById(employeeIds));
     }
+
+    @Override
+    public List<EmployeeDTO> getEmployeesByShiftId(Long shiftId) {
+        List<EmployeeDTO> allEmployees = getAllEmployees();
+        List<EmployeeDTO> allEmployeesOnThatShift = new ArrayList<>();
+
+        for(EmployeeDTO employeeDTO : allEmployees){
+            for(Shift shift : employeeDTO.getShifts()){
+                if(shift.getId().equals(shiftId)){
+                    allEmployeesOnThatShift.add(employeeDTO);
+                }
+            }
+        }
+        return allEmployees;
+    }
 }

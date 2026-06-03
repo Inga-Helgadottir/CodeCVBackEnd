@@ -21,8 +21,7 @@ public class ShiftMapper {
                 shift.getDepartment(),
                 shift.getStartTime(),
                 shift.getEndTime(),
-                shift.getAmountOfEmployeesNeeded(),
-                shift.getEmployeeIds()
+                shift.getAmountOfEmployeesNeeded()
         );
     }
 
@@ -40,7 +39,6 @@ public class ShiftMapper {
                 shiftDto.getStartTime(),
                 shiftDto.getEndTime(),
                 shiftDto.getId(),
-                employeeService.getEmployeesById(shiftDto.getEmployeeIds())
-                );
+                EmployeeMapper.mapToEmployees(employeeService.getEmployeesByShiftId(shiftDto.getId())));
     }
 }
