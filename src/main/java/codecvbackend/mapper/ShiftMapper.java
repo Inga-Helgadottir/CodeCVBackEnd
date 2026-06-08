@@ -16,13 +16,7 @@ public class ShiftMapper {
     }
 
     public static ShiftDTO mapToShiftDto(Shift shift){
-        return new ShiftDTO(
-                shift.getId(),
-                shift.getDepartment(),
-                shift.getStartTime(),
-                shift.getEndTime(),
-                shift.getAmountOfEmployeesNeeded()
-        );
+        return new ShiftDTO(shift);
     }
 
     public static List<ShiftDTO> mapToShiftDtos(List<Shift> shifts){
