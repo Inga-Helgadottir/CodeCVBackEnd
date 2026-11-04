@@ -5,4 +5,6 @@ with authentication using Java Spring boot and Jwt authentication.
 
 ## Here are some relevant links
 [Website hosted with Netlify](https://inga-helgadottir-code-cv.netlify.app/)
+
+
 [GitHub code for the front end](https://github.com/Inga-Helgadottir/CodeCV)
