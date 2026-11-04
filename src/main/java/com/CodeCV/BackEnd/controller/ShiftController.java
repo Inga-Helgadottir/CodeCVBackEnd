@@ -66,7 +66,7 @@ public class ShiftController {
     @RolesAllowed("ROLE_ADMIN")
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity<String> deleteShift(@PathVariable("id") Long shiftId){
-        shiftService.deleteShift(shiftId);
-        return ResponseEntity.ok("Shift deleted successfully!");
+        String response = shiftService.deleteShift(shiftId);
+        return ResponseEntity.ok(response);
     }
 }
