@@ -9,8 +9,8 @@ I am currently looking into hosting it free online, if that works out,
 my next steps will be to establish a communication with my front end.
 
 ## Here are some relevant links
-- [Website hosted with Netlify](https://inga-helgadottir-code-cv.netlify.app/){:target="_blank"}
-- [GitHub code for the front end](https://github.com/Inga-Helgadottir/CodeCV){:target="_blank"}
+- [Website hosted with Netlify](https://inga-helgadottir-code-cv.netlify.app/)
+- [GitHub code for the front end](https://github.com/Inga-Helgadottir/CodeCV)
 - [EER diagram](src/EER-diagram/EER-diagram.png)
 - [SQL Scripts to create the DB](src/SQL/CreateSchemaAndTables.sql)
 - [SQL Scripts to create test users](src/SQL/AddDummyData.sql)
