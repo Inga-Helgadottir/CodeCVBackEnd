@@ -229,7 +229,9 @@ Roles
 
 ## http://localhost:8080/login
 HTTP request method: POST
+
 Authority needed: None
+
 Input entity: EmployeeLogin
 - Sample input
 ```json
@@ -238,6 +240,7 @@ Input entity: EmployeeLogin
   "password" : "password123"
 }
 ```
+
 Output entity: EmployeeLoginDTO
 - Sample output
 ```json
@@ -268,7 +271,9 @@ Output entity: EmployeeLoginDTO
 
 ## http://localhost:8080/employees/create
 HTTP request method: POST
+
 Authority needed: ROLE_ADMIN
+
 Input entity: CreateEmployeeDTO 
 - Sample input
 ```json
@@ -279,6 +284,7 @@ Input entity: CreateEmployeeDTO
   "password": "passwordHere"
 }
 ```
+
 Output entity: EmployeeDTO
 - Sample output
 ```json
@@ -298,7 +304,9 @@ Output entity: EmployeeDTO
 
 ## http://localhost:8080/employees/all
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: List<EmployeeDTO>
 - Sample output
 ```json
@@ -358,7 +366,9 @@ Output entity: List<EmployeeDTO>
 
 ## http://localhost:8080/employees/getById/{id}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: EmployeeDTO
 - Sample output
 ```json
@@ -387,7 +397,9 @@ Output entity: EmployeeDTO
 
 ## http://localhost:8080/employees/myInfo
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (It gives you the information of the person in the provided token)
+
 Output entity: EmployeeDTO
 - Sample output
 ```json
@@ -416,7 +428,9 @@ Output entity: EmployeeDTO
 
 ## http://localhost:8080/employees/employeesOnShift/{id}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (ROLE_EMPLOYEE can only see the employees on their own shifts)
+
 Output entity: List<EmployeeDTO>
 - Sample output
 ```json
@@ -468,7 +482,9 @@ Output entity: List<EmployeeDTO>
 
 ## http://localhost:8080/employees/employeeShifts/{id}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (ROLE_EMPLOYEE can only see their own shifts)
+
 Output entity: List<ShiftDTO>
 - Sample output
 ```json
@@ -494,7 +510,9 @@ Output entity: List<ShiftDTO>
 
 ## http://localhost:8080/employees/addEmployeeToShift/{employeeId}/{shiftId}
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (ROLE_EMPLOYEE can only add themselves to shifts)
+
 Output entity: EmployeeDTO
 - Sample output
 ```json
@@ -523,7 +541,9 @@ Output entity: EmployeeDTO
 
 ## http://localhost:8080/employees/update
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (ROLE_EMPLOYEE can only update their own information)
+
 Input entity: EmployeeDTO with missing values as you can only update first_name, last_name and email here
 - Sample input
 ```json
@@ -534,6 +554,7 @@ Input entity: EmployeeDTO with missing values as you can only update first_name,
         "email": "benCar@example.com"
 }
 ```
+
 Output entity: EmployeeDTO
 - Sample output
 ```json
@@ -553,7 +574,9 @@ Output entity: EmployeeDTO
 
 ## http://localhost:8080/employees/updatePassword
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE (ROLE_EMPLOYEE can only update their own password)
+
 Input entity: UpdatePasswordDTO with missing values as you can only update the password here
 - Sample input
 ```json
@@ -571,6 +594,7 @@ Password successfully changed!
 
 ## http://localhost:8080/employees/delete/{id}
 HTTP request method: DELETE
+
 Authority needed: ROLE_ADMIN
 Output: String
 - Sample output
@@ -581,7 +605,9 @@ Employee deleted successfully!
 
 ## http://localhost:8080/shifts/create
 HTTP request method: POST
+
 Authority needed: ROLE_ADMIN
+
 Input entity: ShiftDTO (the id is auto generated)
 - Sample input
 ```json
@@ -592,6 +618,7 @@ Input entity: ShiftDTO (the id is auto generated)
     "amount_of_employees_needed":2
 }
 ```
+
 Output entity: ShiftDTO
 - Sample output
 ```json
@@ -607,7 +634,9 @@ Output entity: ShiftDTO
 
 ## http://localhost:8080/shifts/getById/{id}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: ShiftDTO
 - Sample output
 ```json
@@ -623,7 +652,9 @@ Output entity: ShiftDTO
 
 ## http://localhost:8080/shifts/all
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE
+
 Output entity: List<ShiftDTO>
 - Sample output
 ```json
@@ -665,7 +696,9 @@ Output entity: List<ShiftDTO>
 
 ## http://localhost:8080/shifts/missingEmployees
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN or ROLE_EMPLOYEE
+
 Output entity: List<ShiftDTO>
 - Sample output
 ```json
@@ -691,7 +724,9 @@ Output entity: List<ShiftDTO>
 
 ## http://localhost:8080/shifts/update/{id}
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN
+
 Output entity: List<ShiftDTO>
 - Sample input and output (just to confirm the shift has been updated)
 ```json
@@ -707,6 +742,7 @@ Output entity: List<ShiftDTO>
 
 ## http://localhost:8080/shifts/delete/{id}
 HTTP request method: DELETE
+
 Authority needed: ROLE_ADMIN
 Output: String
 - Sample output
@@ -717,7 +753,9 @@ Shift deleted successfully!
 
 ## http://localhost:8080/roles/create
 HTTP request method: POST
+
 Authority needed: ROLE_ADMIN
+
 Input entity: RoleDTO (the id is auto generated)
 - Sample input
 ```json
@@ -726,6 +764,7 @@ Input entity: RoleDTO (the id is auto generated)
     "role_name": "tester"
 }
 ```
+
 Output entity: RoleDTO
 - Sample output
 ```json
@@ -738,7 +777,9 @@ Output entity: RoleDTO
 
 ## http://localhost:8080/roles/{name}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: RoleDTO
 - Sample output
 ```json
@@ -751,7 +792,9 @@ Output entity: RoleDTO
 
 ## http://localhost:8080/roles/all
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: List<RoleDTO>
 - Sample output
 ```json
@@ -776,6 +819,7 @@ Output entity: List<RoleDTO>
 
 ## http://localhost:8080/roles/update/{id}
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN
 Input and output entity: RoleDTO
 - Sample input and output
@@ -789,6 +833,7 @@ Input and output entity: RoleDTO
 
 ## http://localhost:8080/roles/delete/{id}
 HTTP request method: DELETE
+
 Authority needed: ROLE_ADMIN
 Output: String
 - Sample output
@@ -798,6 +843,7 @@ Role deleted successfully!
 
 ## http://localhost:8080/assignARoleToAnEmployee/{employeeId}/{roleName}
 HTTP request method: PUT
+
 Authority needed: ROLE_ADMIN
 Output Entity: EmployeeDTO
 - Sample output
@@ -827,7 +873,9 @@ Output Entity: EmployeeDTO
 
 ## http://localhost:8080/roles/employeesWithRole/{roleName}
 HTTP request method: GET
+
 Authority needed: ROLE_ADMIN
+
 Output entity: List<EmployeeDTO>
 - Sample output
 ```json
