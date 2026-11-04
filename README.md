@@ -4,5 +4,5 @@ with authentication using Java Spring boot and Jwt authentication.
 
 
 ## Here are some relevant links
-[<h2>Website hosted with Netlify</h2>](https://inga-helgadottir-code-cv.netlify.app/)
-[<h2>GitHub code for the front end</h2>](https://github.com/Inga-Helgadottir/CodeCV)
+[Website hosted with Netlify](https://inga-helgadottir-code-cv.netlify.app/)
+[GitHub code for the front end](https://github.com/Inga-Helgadottir/CodeCV)
