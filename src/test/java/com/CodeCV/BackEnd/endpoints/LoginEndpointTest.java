@@ -1,4 +1,4 @@
-package com.CodeCV.BackEnd.controllers;
+package com.CodeCV.BackEnd.endpoints;
 
 import com.CodeCV.BackEnd.entity.Employee;
 import com.CodeCV.BackEnd.entity.EmployeeLogin;
