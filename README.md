@@ -926,7 +926,13 @@ Output entity: List<EmployeeDTO>
 ```
 
 ### Endpoint tests
-For each endpoint there are 2 or 3 of the following tests
+The LoginEndpointTests
+- testAdminLoginSuccess
+- testUserLoginSuccess
+- testLoginInvalidCredentials
+- testMalformedJson
+
+For each of the other endpoints there are 2 or 3 of the following tests
 - Success 
   - Called with all the correct information
 - WrongToken, when there is one
