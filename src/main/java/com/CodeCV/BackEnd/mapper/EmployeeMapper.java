@@ -2,6 +2,7 @@ package com.CodeCV.BackEnd.mapper;
 
 import com.CodeCV.BackEnd.dto.EmployeeDTO;
 import com.CodeCV.BackEnd.entity.Employee;
+import com.CodeCV.BackEnd.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -25,14 +26,18 @@ public class EmployeeMapper {
     }
 
     public EmployeeDTO mapToEmployeeDto(Employee employee){
-        return new EmployeeDTO(
-                employee.getId(),
-                employee.getFirst_name(),
-                employee.getLast_name(),
-                employee.getEmail(),
-                roleMapper.mapToRoleDto(employee.getRole()),
-                shiftMapper.mapToShiftDtos(employee.getShifts())
-        );
+        if(employee != null){
+            return new EmployeeDTO(
+                    employee.getId(),
+                    employee.getFirst_name(),
+                    employee.getLast_name(),
+                    employee.getEmail(),
+                    roleMapper.mapToRoleDto(employee.getRole()),
+                    shiftMapper.mapToShiftDtos(employee.getShifts())
+            );
+        }else{
+            throw new ResourceNotFoundException("The employee provided is null");
+        }
     }
 
     public List<EmployeeDTO> mapToEmployeeDtos(List<Employee> employees){

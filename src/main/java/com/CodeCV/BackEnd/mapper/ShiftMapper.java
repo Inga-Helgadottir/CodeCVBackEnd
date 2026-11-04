@@ -3,6 +3,7 @@ package com.CodeCV.BackEnd.mapper;
 
 import com.CodeCV.BackEnd.dto.ShiftDTO;
 import com.CodeCV.BackEnd.entity.Shift;
+import com.CodeCV.BackEnd.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,14 +13,18 @@ import java.util.List;
 public class ShiftMapper {
 
     public ShiftDTO mapToShiftDto(Shift shift){
-        return new ShiftDTO(
-                shift.getId(),
-                shift.getDepartment(),
-                shift.getStart_time(),
-                shift.getEnd_time(),
-                shift.getAmount_of_employees_needed(),
-                shift.howManyEmployeesAreMissing()
-        );
+        if(shift != null){
+            return new ShiftDTO(
+                    shift.getId(),
+                    shift.getDepartment(),
+                    shift.getStart_time(),
+                    shift.getEnd_time(),
+                    shift.getAmount_of_employees_needed(),
+                    shift.howManyEmployeesAreMissing()
+            );
+        }else{
+            throw new ResourceNotFoundException("The shift provided is null");
+        }
     }
 
     public List<ShiftDTO> mapToShiftDtos(List<Shift> shifts){
@@ -37,11 +42,15 @@ public class ShiftMapper {
     }
 
     public Shift mapToShift(ShiftDTO shiftDto){
-        return new Shift(
-                shiftDto.getDepartment(),
-                shiftDto.getStart_time(),
-                shiftDto.getEnd_time(),
-                shiftDto.getAmount_of_employees_needed()
-                );
+        if(shiftDto != null){
+            return new Shift(
+                    shiftDto.getDepartment(),
+                    shiftDto.getStart_time(),
+                    shiftDto.getEnd_time(),
+                    shiftDto.getAmount_of_employees_needed()
+            );
+        }else{
+            throw new ResourceNotFoundException("The shift provided is null");
+        }
     }
 }
